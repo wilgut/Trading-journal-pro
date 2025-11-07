@@ -1,1 +1,8 @@
-export default function Page(){ return <div className='py-8'><h1 className='text-2xl font-bold'>Trading Journal Pro</h1><p className='text-slate-600 mt-2'>Bienvenido. Ve a /register o /login para empezar.</p></div> }
+// app/page.tsx
+import { redirect } from 'next/navigation';
+
+export default function Page() {
+  // Redirige a la página de login; ajusta a "/dashboard" si prefieres ir al panel principal
+  redirect('/login');
+  return null;
+}
