@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -54,8 +54,8 @@ model Trade {
   thoughts     String?        // pensamientos
   emotions     String?
   notes        String?
-  tags         String[]       @default("[]")
-  screenshots  String[]       @default("[]") // URLs
+  tags         String[]       @default([])
+  screenshots  String[]       @default([]) // URLs
 }
 
 enum Direction {
