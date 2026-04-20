@@ -230,7 +230,7 @@ async function main() {
   // Slack delivery
   const webhookUrl = process.env.SLACK_WEBHOOK_URL;
   const slackToken = process.env.SLACK_TOKEN;
-  const channel    = process.env.SLACK_CHANNEL ?? '#general';
+  const channel    = process.env.SLACK_CHANNEL ?? 'C0ATEAY4P6H'; // #all-claude-trading
 
   if (webhookUrl) {
     await sendSlackWebhook(webhookUrl, message);
