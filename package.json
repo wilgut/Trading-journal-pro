@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "sec:insider-buys": "node scripts/sec-insider-buys.mjs",
+    "sec:insider-buys:dry": "DRY_RUN=1 node scripts/sec-insider-buys.mjs"
   },
   "dependencies": {
     "@prisma/client": "latest",
