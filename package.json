@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "insider-trades": "tsx scripts/check-insider-trades.ts",
+    "insider-trades:dry": "tsx scripts/check-insider-trades.ts --no-slack"
   },
   "dependencies": {
     "@prisma/client": "latest",
@@ -27,6 +29,7 @@
     "autoprefixer": "^10.4.18",
     "postcss": "^8.4.32",
     "typescript": "^5.5.4",
+    "tsx": "^4.19.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/react": "^18.0.0",
     "@types/node": "^20.0.0"

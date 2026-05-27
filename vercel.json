@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/insider-trades?notify=true",
+      "schedule": "0 6 * * 1-5"
+    }
+  ]
+}
