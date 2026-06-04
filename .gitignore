@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment files (keep .env.example, ignore actual secrets)
+.env
+.env.local
+.env.*.local
+
+# Prisma generated client
+prisma/generated/
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Uploads (user-generated content)
+public/uploads/
+
+# TypeScript build info
+*.tsbuildinfo
