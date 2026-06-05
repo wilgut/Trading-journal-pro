@@ -1,0 +1,45 @@
+name: SEC Insider Purchase Scanner
+
+on:
+  schedule:
+    # Run at 09:00 ET (13:00 UTC) on weekdays — after pre-market, before open
+    - cron: "0 13 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      lookback_hours:
+        description: "Hours to look back (default: 24)"
+        required: false
+        default: "24"
+      min_purchase_usd:
+        description: "Minimum purchase value in USD (default: 100000)"
+        required: false
+        default: "100000"
+      dry_run:
+        description: "Print message without posting to Slack (true/false)"
+        required: false
+        default: "false"
+
+jobs:
+  scan:
+    name: Fetch Form 4 filings and post to Slack
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run insider purchase scanner
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          LOOKBACK_HOURS: ${{ github.event.inputs.lookback_hours || '24' }}
+          MIN_PURCHASE_USD: ${{ github.event.inputs.min_purchase_usd || '100000' }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '0' }}
+        run: python3 scripts/sec_insider_buys.py
